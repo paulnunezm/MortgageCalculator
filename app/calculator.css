@@ -51,12 +51,63 @@ h2 {
     width: 298px;
     height: 440px;
     margin: auto;
+    padding:35px 0 35px 66px;
+    box-sizing: border-box;
     background-color: #eaf6fa;
     -webkit-transform: translate(calc(100% - 10px));
     -moz-transform: translate(calc(100% - 10px));
     -ms-transform: translate(calc(100% - 10px));
     -o-transform: translate(calc(100% - 10px));
     transform: translate(calc(100% - 10px));
+}
+.calculator_results__header{
+    color: #3e3d3f;
+    line-height: 1.36;
+    font-family: HelveticaNeue, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    text-align: left;
+}
+
+.calculator_results__header--title{
+    font-size: 22px;
+    margin-bottom: 9px;
+}
+
+.calculator_results__header--subtitle {
+    font-size: 14px;
+    margin: 20px 0 0 0;
+}
+
+.calculator_results__header--total{
+    font-size: 18px;
+    line-height: 1.67;
+}
+
+.calculator_results__divider{
+    width: 192px;
+    height: 2px;
+    margin: 20px 0;
+    border-radius: 2px;
+    background-color:#cbcbcb;
+}
+
+.calculator_results__result {
+    font-weight: bold;
+    color: #3e3d3f;
+    font-size:18px;
+    opacity:0.2;
+    line-height: 1.67;
+    margin: 0;
+}
+
+.calculated .calculator_results__result {
+    opacity: 1;
+}
+
+.calculator_results__result--total {
+    font-size: 22px;
 }
 
 .calculator__card {
