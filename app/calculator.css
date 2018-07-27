@@ -1,0 +1,316 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+.mortgage_calculator_container {
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 15px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family:HelveticaNeue, Arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+}
+
+.mortgage_calculator_container__title {
+    width: 100%;
+    margin-bottom: 25px;
+    margin-right: auto;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #cacaca;
+    color: #005175;
+    line-height: 1.36;
+    font-size: 22px;
+    text-align: left;
+}
+
+.calculator {
+    width: 470px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.1);
+    padding: 34px 40px 40px 40px;
+    box-sizing: border-box;
+}
+
+.calculator__title {
+    position: relative;
+    width: 100%;
+    float: left;
+    color: #3e3d3f;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    font-size: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.field {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.field:first-child {
+    margin-top: 35px;
+}
+
+.field--group {
+    flex-basis: 185px;
+    margin: 0;
+}
+
+.fields_container {
+    position: relative;
+    float: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.fields_container .field {
+    margin: 0;
+}
+
+.field__label {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.21;
+    letter-spacing: 0.2px;
+    color: #3e3d3f;
+}
+
+.field__range {
+    position: relative;
+    flex-grow: 1;
+    margin: 0 5px;
+    height: 8px;
+    border-radius: 100px;
+    background-color: #d8d8d8;
+}
+
+.field_range__track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #1091cc;
+    border-radius: 100px;
+}
+
+.field__range__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.field__value_text {
+    float: left;
+    width: 24px;
+    height: 18px;
+    opacity: 0.8;
+    font-size: 16px;
+    text-align: center;
+    color: #3e3d3f;
+}
+
+.field__input {
+    height: 45px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: solid 1px #cacaca;
+    background-color: #ffffff;
+    color: #3e3d3f;
+    font-size: 19px;
+    text-align: center;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+}
+
+.field__input--small {
+    width: 45px;
+    margin-left: 14px;
+}
+
+.field__input--full_width {
+    width: 100%;
+    text-align: left;
+}
+
+.field__input--currency,
+.field--currency::before {
+    font-size: 16px;
+    text-align: left;
+}
+
+.field--currency::before {
+    content: '$';
+    position: absolute;
+    left: 25px;
+    top: 35px;
+    width: 22px;
+    height: 22px;
+}
+
+.field__input--currency {
+    padding-left: 40px;
+    box-sizing: border-box;
+}
+
+.calculator__button {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    background-color: #0077c0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+
+/** inputs styles **/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Remove controls */
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield; /* Remove controls from Firefox */
+}
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type='range']::-moz-focus-outer {
+    border: 0;
+}
+
+input[type=range]:focus {
+    outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+
+    /* Hides the slider so custom styles can be added */
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27);
+    cursor: pointer;
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27);
+    cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.27);
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: none;
+    border: 0;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: none;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 16px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: none;
+    border: 0;
+    border-radius: 0;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: none;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: none;
+    border: 0;
+    border-radius: 0;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: none;
+}
