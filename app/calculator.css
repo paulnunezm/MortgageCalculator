@@ -198,6 +198,18 @@ h2 {
     cursor: pointer;
 }
 
+.calculator__button::before {
+    content: 'CALCULATE'
+}
+
+.calculated .calculator__button::before {
+    content: 'RECALCULATE'
+}
+
+.calculated .calculator__button--recalculate {
+    display: block;
+}
+
 /** inputs styles **/
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
