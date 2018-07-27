@@ -81,10 +81,9 @@
   </div>
 </div>
 
+<script src="utils.js" type="text/javascript"></script>
 <script type="text/javascript">
-  window.onload = function () {
-    init()
-  }
+  window.onload = init
 
   function init() {
     var ranges = {
@@ -96,21 +95,6 @@
       loan: document.getElementById('loan_amount_input'),
       annualTax: document.getElementById('annual_tax_input'),
       annualInsurance: document.getElementById('annual_insurance_input')
-    }
-
-    function preventNonNumericInput(e) {
-      var pressedKey = e.which;
-      if (isNotADeleteKey(pressedKey) && isNotANumericKey(pressedKey)) {
-        e.preventDefault();
-      }
-    }
-
-    function isNotADeleteKey(pressedKey) {
-      return pressedKey !== 8 && pressedKey !== 0
-    }
-
-    function isNotANumericKey(pressedKey) {
-      return pressedKey < 48 || pressedKey > 57
     }
 
     function setRangesInitialValues() {
@@ -125,17 +109,10 @@
       handleRangeChangeForId(e.target.id)
     }
 
-    function handleRangeChangeForId(rangeId) {
-      var rangeInput = document.getElementById(rangeId)
-      var track = document.getElementById(rangeId + '_track')
-      var numberInput = document.getElementById(rangeId + '_input')
-      handleRange(rangeInput, numberInput, track)
-    }
-
-    function handleRange(rangeInput, numberInput, track) {
-      var trackWidthInPercent = rangeInput.value * 100 / rangeInput.max
-      numberInput.value = rangeInput.value
-      track.style.width = trackWidthInPercent + "%"
+    function setInputNumbersListeners(elementsArray){
+      for (var i = 0; i < elementsArray.length; i++) {
+        elementsArray[i].addEventListener('keypress', preventNonNumericInput, false)
+      }
     }
 
     function addEventListeners() {
@@ -145,9 +122,7 @@
       ranges.years.addEventListener('mousemove', handleYearsRangeInputChange, false)
 
       var numericInputs = document.querySelectorAll('.calculator input[type="number"]')
-      for (var i = 0; i < numericInputs.length; i++) {
-        numericInputs[i].addEventListener('keypress', preventNonNumericInput, false)
-      }
+      setInputNumbersListeners(numericInputs)
     }
 
     setRangesInitialValues()
