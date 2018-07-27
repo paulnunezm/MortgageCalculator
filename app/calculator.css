@@ -151,6 +151,11 @@ h2 {
     line-height: normal;
 }
 
+.field__input:focus{
+    border: solid 1px #3e3d3f;
+    box-shadow: 0 0 4px 0 rgba(62, 61, 63, 0.62);
+}
+
 .field__input--small {
     width: 45px;
     margin-left: 14px;
