@@ -7,22 +7,35 @@
 </head>
 <body>
 
-<div class="mortgage_calculator_container">
+<div class="mortgage_calculator_container ">
   <h1 class="mortgage_calculator_container__title">Mortgage Calculator</h1>
 
 
   <div class="calculator">
     <div class="calculator_results">
       <h1 class="calculator_results__header calculator_results__header--title">Your results</h1>
-      <h3 class="calculator_results__header calculator_results__header--subtitle">Principle & Interest</h3>
-      <p class="calculator_results__result" ><span>$</span> <span id="principle_and_interest_result">- -</span></p>
-      <h3 class="calculator_results__header calculator_results__header--subtitle">Tax</h3>
-      <p class="calculator_results__result" ><span>$</span> <span id="tax_result">- -</span></p>
-      <h3 class="calculator_results__header calculator_results__header--subtitle">Insurance</h3>
-      <p class="calculator_results__result" ><span>$</span> <span id="insurance_result">- -</span></p>
+
+      <div class="calculator_results__result_container">
+        <h3 class="calculator_results__header calculator_results__header--subtitle">Principle & Interest</h3>
+        <p class="calculator_results__result" ><span>$</span> <span id="principle_and_interest_result">- -</span></p>
+      </div>
+
+      <div class="calculator_results__result_container">
+        <h3 class="calculator_results__header calculator_results__header--subtitle">Tax</h3>
+        <p class="calculator_results__result" ><span>$</span> <span id="tax_result">- -</span></p>
+      </div>
+
+      <div class="calculator_results__result_container">
+        <h3 class="calculator_results__header calculator_results__header--subtitle">Insurance</h3>
+        <p class="calculator_results__result" ><span>$</span> <span id="insurance_result">- -</span></p>
+      </div>
+
       <div class="calculator_results__divider"></div>
-      <h2 class="calculator_results__header calculator_results__header--total">Total Monthly Payment</h2>
-      <p class="calculator_results__result calculator_results__result--total" ><span>$</span> <span id="monthly_payment_result">- -</span></p>
+
+      <div class="calculator_results__result_container">
+        <h2 class="calculator_results__header calculator_results__header--total">Total Monthly Payment</h2>
+        <p class="calculator_results__result calculator_results__result--total" ><span>$</span> <span id="monthly_payment_result">- -</span></p>
+      </div>
     </div>
 
     <div class="calculator__card">
@@ -123,7 +136,7 @@
       }
 
       function setResults(results) {
-        document.querySelector('.calculator').classList.add('calculated')
+        document.querySelector('.mortgage_calculator_container').classList.add('calculated')
         document.getElementById('principle_and_interest_result').innerText = getFormattedResult(results.principleAndInterest)
         document.getElementById('tax_result').innerText = getFormattedResult(results.tax)
         document.getElementById('insurance_result').innerText = getFormattedResult(results.insurance)
