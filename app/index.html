@@ -15,120 +15,150 @@
     <div class="calculator_results">
       <h1 class="calculator_results__header calculator_results__header--title">Your results</h1>
       <h3 class="calculator_results__header calculator_results__header--subtitle">Principle & Interest</h3>
-      <p class="calculator_results__result">$ - -</p>
+      <p class="calculator_results__result" ><span>$</span> <span id="principle_and_interest_result">- -</span></p>
       <h3 class="calculator_results__header calculator_results__header--subtitle">Tax</h3>
-      <p class="calculator_results__result">$ - -</p>
+      <p class="calculator_results__result" ><span>$</span> <span id="tax_result">- -</span></p>
       <h3 class="calculator_results__header calculator_results__header--subtitle">Insurance</h3>
-      <p class="calculator_results__result">$ - -</p>
+      <p class="calculator_results__result" ><span>$</span> <span id="insurance_result">- -</span></p>
       <div class="calculator_results__divider"></div>
       <h2 class="calculator_results__header calculator_results__header--total">Total Monthly Payment</h2>
-      <p class="calculator_results__result calculator_results__result--total">$ - -</p>
+      <p class="calculator_results__result calculator_results__result--total" ><span>$</span> <span id="monthly_payment_result">- -</span></p>
     </div>
 
     <div class="calculator__card">
       <h2 class="calculator__title">Change values to calculate your results</h2>
 
-    <div class="calculator__fields">
-      <div class="field">
-        <label class="field__label" for="years_of_mortgage">Years of mortgage</label>
-        <span class="field__value_text">1</span>
+      <div class="calculator__fields">
+        <div class="field">
+          <label class="field__label" for="years_of_mortgage">Years of mortgage</label>
+          <span class="field__value_text">1</span>
 
-        <div class="field__range field__years_of_mortgage">
-          <div class="field_range__track" id="years_of_mortgage_track"></div>
-          <input class="field__range__input" id="years_of_mortgage" type="range" min="1" max="40" value="0"/>
+          <div class="field__range field__years_of_mortgage">
+            <div class="field_range__track" id="years_of_mortgage_track"></div>
+            <input class="field__range__input" id="years_of_mortgage" type="range" min="1" max="40" value="0"/>
+          </div>
+
+          <span class="field__value_text">40</span>
+          <input class="field__input field__input--small" id="years_of_mortgage_input" type="number" min="1" max="40">
         </div>
 
-        <span class="field__value_text">40</span>
-        <input class="field__input field__input--small" id="years_of_mortgage_input" type="number" min="1" max="40">
-      </div>
+        <div class="field">
+          <label class="field__label" for="interest">Rate of interest (%)</label>
+          <span class="field__value_text">0.1</span>
 
-      <div class="field">
-        <label class="field__label" for="interest">Rate of interest (%)</label>
-        <span class="field__value_text">0.1</span>
+          <div class="field__range field__interest">
+            <div class="field_range__track" id="interest_track"></div>
+            <input class="field__range__input" id="interest" type="range" min="0.1" step="0.1" max="10" value="0"/>
+          </div>
 
-        <div class="field__range field__interest">
-          <div class="field_range__track" id="interest_track"></div>
-          <input class="field__range__input" id="interest" type="range" min="0.1" step="0.1" max="10" value="0"/>
+          <span class="field__value_text">10</span>
+          <input class="field__input field__input--small" id="interest_input" type="number" min="0.1" step="0.1"
+                 max="10"/>
         </div>
 
-        <span class="field__value_text">10</span>
-        <input class="field__input field__input--small" id="interest_input" type="number" min="0.1" step="0.1"
-               max="10"/>
-      </div>
-
-      <div class="field field--currency">
-        <label class="field__label" for="loan_amount_input">Loan Amount</label>
-        <input class="field__input field__input--full_width field__input--currency" id="loan_amount_input" type="number"
-               value="1000">
-      </div>
-
-      <div class="fields_container">
-        <div class="field field--group field--currency">
-          <label class="field__label" for="annual_tax_input">Annual Tax</label>
-          <input class="field__input field__input--full_width field__input--currency" id="annual_tax_input" type="number"
+        <div class="field field--currency">
+          <label class="field__label" for="loan_amount_input">Loan Amount</label>
+          <input class="field__input field__input--full_width field__input--currency" id="loan_amount_input"
+                 type="number"
                  value="1000">
         </div>
 
-        <div class="field field--group field--currency">
-          <label class="field__label" for="annual_insurance_input">Annual Insurance</label>
-          <input class="field__input field__input--full_width field__input--currency" id="annual_insurance_input"
-                 type="number" value="3000">
+        <div class="fields_container">
+          <div class="field field--group field--currency">
+            <label class="field__label" for="annual_tax_input">Annual Tax</label>
+            <input class="field__input field__input--full_width field__input--currency" id="annual_tax_input"
+                   type="number"
+                   value="1000">
+          </div>
+
+          <div class="field field--group field--currency">
+            <label class="field__label" for="annual_insurance_input">Annual Insurance</label>
+            <input class="field__input field__input--full_width field__input--currency" id="annual_insurance_input"
+                   type="number" value="3000">
+          </div>
         </div>
       </div>
+
+      <button class="field__input calculator__button "></button>
     </div>
-
-    <button class="field__input calculator__button "></button>
   </div>
-</div>
 
-<script src="utils.js" type="text/javascript"></script>
-<script type="text/javascript">
-  window.onload = init
+  <script src="utils.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    window.onload = init
 
-  function init() {
-    var ranges = {
-      years: document.getElementById('years_of_mortgage'),
-      interest: document.getElementById('interest')
-    }
-
-    var ammountInputs = {
-      loan: document.getElementById('loan_amount_input'),
-      annualTax: document.getElementById('annual_tax_input'),
-      annualInsurance: document.getElementById('annual_insurance_input')
-    }
-
-    function setRangesInitialValues() {
-      ranges.years.value = 30
-      ranges.interest.value = 8
-
-      handleRangeChangeForId('years_of_mortgage')
-      handleRangeChangeForId('interest')
-    }
-
-    function handleYearsRangeInputChange(e) {
-      handleRangeChangeForId(e.target.id)
-    }
-
-    function setInputNumbersListeners(elementsArray){
-      for (var i = 0; i < elementsArray.length; i++) {
-        elementsArray[i].addEventListener('keypress', preventNonNumericInput, false)
+    function init() {
+      var ranges = {
+        years: document.getElementById('years_of_mortgage'),
+        interest: document.getElementById('interest')
       }
+
+      var ammountInputs = {
+        loan: document.getElementById('loan_amount_input'),
+        annualTax: document.getElementById('annual_tax_input'),
+        annualInsurance: document.getElementById('annual_insurance_input')
+      }
+
+      function setRangesInitialValues() {
+        ranges.years.value = 30
+        ranges.interest.value = 8
+
+        handleRangeChangeForId('years_of_mortgage')
+        handleRangeChangeForId('interest')
+      }
+
+      function handleYearsRangeInputChange(e) {
+        handleRangeChangeForId(e.target.id)
+      }
+
+      function setInputNumbersListeners(elementsArray) {
+        for (var i = 0; i < elementsArray.length; i++) {
+          elementsArray[i].addEventListener('keypress', preventNonNumericInput, false)
+        }
+      }
+
+      function getFormattedResult(value) {
+        return  (value % 1 === 0) ? value + '.00' : Math.floor(value * 100)/100 // floor to only 2 decimal places
+      }
+
+      function setResults(results) {
+        document.querySelector('.calculator').classList.add('calculated')
+        document.getElementById('principle_and_interest_result').innerText = getFormattedResult(results.principleAndInterest)
+        document.getElementById('tax_result').innerText = getFormattedResult(results.tax)
+        document.getElementById('insurance_result').innerText = getFormattedResult(results.insurance)
+        document.getElementById('monthly_payment_result').innerText = getFormattedResult(results.monthlyPayment)
+      }
+
+      function calculateResults() {
+        var results = {
+          principleAndInterest: ((ranges.interest.value / 100) / 12) * ammountInputs.loan.value / (1 - Math.pow((1 + ((ranges.interest.value / 100) / 12)),
+            -ranges.years.value * 12)),
+          tax: ammountInputs.annualTax.value / 12,
+          insurance: ammountInputs.annualInsurance.value / 12,
+          monthlyPayment: 0
+        }
+        results.monthlyPayment = results.principleAndInterest + results.tax + results.insurance
+        setResults(results)
+        console.table(results);
+      }
+
+
+      function addEventListeners() {
+        ranges.interest.addEventListener('change', handleYearsRangeInputChange, false)
+        ranges.interest.addEventListener('mousemove', handleYearsRangeInputChange, false)
+        ranges.years.addEventListener('change', handleYearsRangeInputChange, false)
+        ranges.years.addEventListener('mousemove', handleYearsRangeInputChange, false)
+
+        var numericInputs = document.querySelectorAll('.calculator input[type="number"]')
+        setInputNumbersListeners(numericInputs)
+
+        document.querySelector('.calculator__button').addEventListener('click', calculateResults, false)
+      }
+
+      setRangesInitialValues()
+      addEventListeners()
     }
-
-    function addEventListeners() {
-      ranges.interest.addEventListener('change', handleYearsRangeInputChange, false)
-      ranges.interest.addEventListener('mousemove', handleYearsRangeInputChange, false)
-      ranges.years.addEventListener('change', handleYearsRangeInputChange, false)
-      ranges.years.addEventListener('mousemove', handleYearsRangeInputChange, false)
-
-      var numericInputs = document.querySelectorAll('.calculator input[type="number"]')
-      setInputNumbersListeners(numericInputs)
-    }
-
-    setRangesInitialValues()
-    addEventListeners()
-  }
-</script>
+  </script>
 
 </body>
 </html>
