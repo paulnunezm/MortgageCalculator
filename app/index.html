@@ -17,22 +17,23 @@
 
       <div class="calculator_results__result_container">
         <h3 class="calculator_results__header calculator_results__header--subtitle">Principle & Interest</h3>
-        <p class="calculator_results__result" ><span>$</span> <span id="principle_and_interest_result">- -</span></p>
+        <p class="calculator_results__result"><span>$</span> <span id="principle_and_interest_result">- -</span></p>
       </div>
 
       <div class="calculator_results__result_container">
         <h3 class="calculator_results__header calculator_results__header--subtitle">Tax</h3>
-        <p class="calculator_results__result" ><span>$</span> <span id="tax_result">- -</span></p>
+        <p class="calculator_results__result"><span>$</span> <span id="tax_result">- -</span></p>
       </div>
 
       <div class="calculator_results__result_container">
         <h3 class="calculator_results__header calculator_results__header--subtitle">Insurance</h3>
-        <p class="calculator_results__result" ><span>$</span> <span id="insurance_result">- -</span></p>
+        <p class="calculator_results__result"><span>$</span> <span id="insurance_result">- -</span></p>
       </div>
 
       <div class="calculator_results__result_container">
         <h2 class="calculator_results__header calculator_results__header--total">Total Monthly Payment</h2>
-        <p class="calculator_results__result calculator_results__result--total" ><span>$</span> <span id="monthly_payment_result">- -</span></p>
+        <p class="calculator_results__result calculator_results__result--total"><span>$</span> <span
+                id="monthly_payment_result">- -</span></p>
       </div>
     </div>
 
@@ -95,82 +96,99 @@
   </div>
 </div>
 
-  <script src="utils.js"></script>
-  <script>
-    window.onload = init
+<script src="utils.js"></script>
+<script>
+  window.onload = init
 
-    function init() {
-      var ranges = {
-        years: document.getElementById('years_of_mortgage'),
-        interest: document.getElementById('interest')
-      }
+  function init() {
+    var RESULTS_CARD_APPEARING_ANIMATION_TIME = 500 // declared in css
 
-      var ammountInputs = {
-        loan: document.getElementById('loan_amount_input'),
-        annualTax: document.getElementById('annual_tax_input'),
-        annualInsurance: document.getElementById('annual_insurance_input')
-      }
-
-      function setRangesInitialValues() {
-        ranges.years.value = 30
-        ranges.interest.value = 8
-
-        handleRangeChangeForId('years_of_mortgage')
-        handleRangeChangeForId('interest')
-      }
-
-      function handleYearsRangeInputChange(e) {
-        handleRangeChangeForId(e.target.id)
-      }
-
-      function setInputNumbersListeners(elementsArray) {
-        for (var i = 0; i < elementsArray.length; i++) {
-          elementsArray[i].addEventListener('keypress', preventNonNumericInput, false)
-        }
-      }
-
-      function getFormattedResult(value) {
-        return  (value % 1 === 0) ? value + '.00' : Math.floor(value * 100)/100 // floor to only 2 decimal places
-      }
-
-      function setResults(results) {
-        document.querySelector('.mortgage_calculator_container').classList.add('calculated')
-        document.getElementById('principle_and_interest_result').innerText = getFormattedResult(results.principleAndInterest)
-        document.getElementById('tax_result').innerText = getFormattedResult(results.tax)
-        document.getElementById('insurance_result').innerText = getFormattedResult(results.insurance)
-        document.getElementById('monthly_payment_result').innerText = getFormattedResult(results.monthlyPayment)
-      }
-
-      function calculateResults() {
-        var results = {
-          principleAndInterest: ((ranges.interest.value / 100) / 12) * ammountInputs.loan.value / (1 - Math.pow((1 + ((ranges.interest.value / 100) / 12)),
-            -ranges.years.value * 12)),
-          tax: ammountInputs.annualTax.value / 12,
-          insurance: ammountInputs.annualInsurance.value / 12,
-          monthlyPayment: 0
-        }
-        results.monthlyPayment = results.principleAndInterest + results.tax + results.insurance
-        setResults(results)
-        console.table(results);
-      }
-
-
-      function addEventListeners() {
-        ranges.interest.addEventListener('change', handleYearsRangeInputChange, false)
-        ranges.interest.addEventListener('mousemove', handleYearsRangeInputChange, false)
-        ranges.years.addEventListener('change', handleYearsRangeInputChange, false)
-        ranges.years.addEventListener('mousemove', handleYearsRangeInputChange, false)
-
-        var numericInputs = document.querySelectorAll('.calculator input[type="number"]')
-        setInputNumbersListeners(numericInputs)
-
-        document.querySelector('.calculator__button').addEventListener('click', calculateResults, false)
-      }
-
-      setRangesInitialValues()
-      addEventListeners()
+    var ranges = {
+      years: document.getElementById('years_of_mortgage'),
+      interest: document.getElementById('interest')
     }
-  </script>
+
+    var ammountInputs = {
+      loan: document.getElementById('loan_amount_input'),
+      annualTax: document.getElementById('annual_tax_input'),
+      annualInsurance: document.getElementById('annual_insurance_input')
+    }
+
+    function setRangesInitialValues() {
+      ranges.years.value = 30
+      ranges.interest.value = 8
+
+      handleRangeChangeForId('years_of_mortgage')
+      handleRangeChangeForId('interest')
+    }
+
+    function handleYearsRangeInputChange(e) {
+      handleRangeChangeForId(e.target.id)
+    }
+
+    function setInputNumbersListeners(elementsArray) {
+      for (var i = 0; i < elementsArray.length; i++) {
+        elementsArray[i].addEventListener('keypress', preventNonNumericInput, false)
+      }
+    }
+
+    function getFormattedResult(value) {
+      return (value % 1 === 0) ? value + '.00' : Math.floor(value * 100) / 100 // floor to only 2 decimal places
+    }
+
+    function setCalculatedClass() {
+      document.querySelector('.mortgage_calculator_container').classList.add('calculated')
+    }
+
+    function setResults(results) {
+      document.getElementById('principle_and_interest_result').innerText = getFormattedResult(results.principleAndInterest)
+      document.getElementById('tax_result').innerText = getFormattedResult(results.tax)
+      document.getElementById('insurance_result').innerText = getFormattedResult(results.insurance)
+      document.getElementById('monthly_payment_result').innerText = getFormattedResult(results.monthlyPayment)
+    }
+
+    function getCalculatedResults() {
+      var results = {
+        principleAndInterest: ((ranges.interest.value / 100) / 12) * ammountInputs.loan.value / (1 - Math.pow((1 + ((ranges.interest.value / 100) / 12)),
+          -ranges.years.value * 12)),
+        tax: ammountInputs.annualTax.value / 12,
+        insurance: ammountInputs.annualInsurance.value / 12,
+        monthlyPayment: 0
+      }
+      results.monthlyPayment = results.principleAndInterest + results.tax + results.insurance
+      return results
+    }
+
+    function scrollToResults() {
+      document.querySelector('.calculator_results').scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
+
+    function onCalculateClicked() {
+      var results = getCalculatedResults()
+      setResults(results)
+      setCalculatedClass()
+      setTimeout(scrollToResults, RESULTS_CARD_APPEARING_ANIMATION_TIME)
+    }
+
+
+    function addEventListeners() {
+      ranges.interest.addEventListener('change', handleYearsRangeInputChange, false)
+      ranges.interest.addEventListener('mousemove', handleYearsRangeInputChange, false)
+      ranges.years.addEventListener('change', handleYearsRangeInputChange, false)
+      ranges.years.addEventListener('mousemove', handleYearsRangeInputChange, false)
+
+      var numericInputs = document.querySelectorAll('.calculator input[type="number"]')
+      setInputNumbersListeners(numericInputs)
+
+      document.querySelector('.calculator__button').addEventListener('click', onCalculateClicked, false)
+    }
+
+    setRangesInitialValues()
+    addEventListeners()
+  }
+</script>
 
 </body>
 </html>
