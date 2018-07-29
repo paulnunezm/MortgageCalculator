@@ -535,6 +535,8 @@ input[type=range]:focus::-ms-fill-upper {
 @media all and (max-width: 500px) {
     .mortgage_calculator_container__title {
         font-size: 20px;
+        padding-bottom: 10px;
+        color: #006ea0;
     }
 
     .calculated .calculator_results {
@@ -547,6 +549,7 @@ input[type=range]:focus::-ms-fill-upper {
 
     .calculator {
         width: 100%;
+        top: 75px;
     }
     .calculator__card,
     .calculator_results {
