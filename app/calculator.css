@@ -301,6 +301,36 @@ h2 {
     box-sizing: border-box;
 }
 
+.field--currency.error .field__input--currency{
+    border: solid 1px #da3535;
+}
+
+.field--currency.error::after {
+    position: absolute;
+    left: 0; top: 67px;
+    height: 15px;
+    color: #da3535;
+    text-align: left;
+    font-size: 12px;
+}
+
+.error .field--group,
+#field_loan_amount.error{
+    margin-bottom: 28px;
+}
+
+#field_loan_amount.error:after{
+    content: 'Loan Amount is mandatory';
+}
+
+#field_annual_tax.error:after{
+    content: 'Anual Tax is mandatory';
+}
+
+#field_annual_insurance.error:after{
+    content: 'Annual Insurance is mandatory';
+}
+
 .calculator__button {
     position: relative;
     width: 100%;
@@ -591,7 +621,7 @@ input[type=range]:focus::-ms-fill-upper {
         font-weight: normal;
     }
 
-    .calculator_results__result{
+    .calculator_results__result {
         font-family: 'SFUIDisplay', sans-serif;
         font-weight: normal;
     }
@@ -650,6 +680,24 @@ input[type=range]:focus::-ms-fill-upper {
 
     .field__input--currency {
         padding-left: 24px;
+    }
+
+    .field--currency.error::after {
+        top: 60px;
+        height: 12px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+    .error .field--group,
+    #field_loan_amount.error{
+        margin-bottom: 28px;
+    }
+
+    #field_loan_amount.error:after,
+    #field_annual_tax.error:after,
+    #field_annual_insurance.error:after{
+        content: 'Mandatory field';
     }
 
 }
