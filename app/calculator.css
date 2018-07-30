@@ -19,7 +19,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: HelveticaNeue, Arial, sans-serif;
+    font-family: 'HelveticaNeue', sans-serif;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -36,6 +36,7 @@ h2 {
     color: #005175;
     line-height: 1.36;
     font-size: 22px;
+    font-weight: normal;
     text-align: left;
 }
 
@@ -67,7 +68,6 @@ h2 {
 .calculator_results__header {
     color: #3e3d3f;
     line-height: 1.36;
-    font-family: HelveticaNeue, Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -166,6 +166,7 @@ h2 {
     font-size: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid #cbcbcb;
+    font-weight: normal;
 }
 
 .field {
@@ -254,7 +255,7 @@ h2 {
     border: solid 1px #cacaca;
     background-color: #ffffff;
     color: #3e3d3f;
-    font-size: 19px;
+    font-size: 16px;
     text-align: center;
     font-weight: normal;
     font-style: normal;
@@ -541,6 +542,8 @@ input[type=range]:focus::-ms-fill-upper {
         font-size: 20px;
         padding-bottom: 10px;
         color: #006ea0;
+        font-weight: 100;
+        letter-spacing: 0.5px;
     }
 
     .calculated .calculator_results {
@@ -584,6 +587,13 @@ input[type=range]:focus::-ms-fill-upper {
 
     .calculator_results__header--subtitle {
         font-size: 12px;
+        font-family: 'SFUIDisplay', sans-serif;
+        font-weight: normal;
+    }
+
+    .calculator_results__result{
+        font-family: 'SFUIDisplay', sans-serif;
+        font-weight: normal;
     }
 
     .calculator_results__result,
