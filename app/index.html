@@ -178,7 +178,7 @@
         loanField.classList.remove('error')
       }
 
-      if (ammountInputs.annualTax.value.length === 0 || ammountInputs.annualInsurance.value.length ===0) {
+      if (ammountInputs.annualTax.value.length === 0 || ammountInputs.annualInsurance.value.length === 0) {
         bottomFieldsContainer.classList.add('error')
 
         if (ammountInputs.annualTax.value.length === 0) {
@@ -210,10 +210,9 @@
     }
 
     function onCalculateClicked() {
+      showErrorMessagesIfAny()
       if (isDataValidToCalculate()) {
-       showResults()
-      } else {
-        showErrorMessagesIfAny()
+        showResults()
       }
     }
 
