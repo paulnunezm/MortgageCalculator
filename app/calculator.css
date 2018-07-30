@@ -582,6 +582,11 @@ input[type=range]:focus::-ms-fill-upper {
         font-weight: lighter;
         font-size: 18px;
     }
+
+    .error .field--group,
+    #field_loan_amount.error {
+        margin-bottom: 10px;
+    }
 }
 
 @media all and (max-width: 500px) {
