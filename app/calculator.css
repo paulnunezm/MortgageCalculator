@@ -652,7 +652,7 @@ input[type=range]:focus::-ms-fill-upper {
     }
 
     .field:nth-child(2) {
-        margin-bottom: 30px;
+        margin-bottom: 22px;
     }
 
     .field--group {
