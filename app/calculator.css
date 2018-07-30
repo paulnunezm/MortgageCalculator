@@ -689,7 +689,10 @@ input[type=range]:focus::-ms-fill-upper {
         font-weight: bold;
     }
 
-    .error .field--group,
+    .error .field--group {
+        margin-bottom: 10px;
+    }
+
     #field_loan_amount.error{
         margin-bottom: 28px;
     }
