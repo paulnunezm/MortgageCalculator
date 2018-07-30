@@ -69,22 +69,22 @@
                  max="10"/>
         </div>
 
-        <div id="field_loan_amount" class="field field--currency error ">
+        <div id="field_loan_amount" class="field field--currency">
           <label class="field__label" for="loan_amount_input">Loan Amount</label>
-          <input class="field__input field__input--full_width field__input--currency error" id="loan_amount_input"
+          <input class="field__input field__input--full_width field__input--currency" id="loan_amount_input"
                  type="number"
                  value="1000"/>
         </div>
 
-        <div class="fields_container error">
-          <div id="field_annual_tax" class="field field--group field--currency error">
+        <div class="fields_container">
+          <div id="field_annual_tax" class="field field--group field--currency">
             <label class="field__label" for="annual_tax_input">Annual Tax</label>
             <input class="field__input field__input--full_width field__input--currency" id="annual_tax_input"
                    type="number"
                    value="1000"/>
           </div>
 
-          <div id="field_annual_insurance" class="field field--group field--currency error">
+          <div id="field_annual_insurance" class="field field--group field--currency">
             <label class="field__label" for="annual_insurance_input">Annual Insurance</label>
             <input class="field__input field__input--full_width field__input--currency" id="annual_insurance_input"
                    type="number" value="3000">
@@ -166,13 +166,56 @@
       })
     }
 
-    function onCalculateClicked() {
+    function showErrorMessagesIfAny() {
+      var loanField = document.getElementById('field_loan_amount');
+      var bottomFieldsContainer = document.querySelector('.fields_container');
+      var taxField = document.getElementById('field_annual_tax');
+      var insuranceField = document.getElementById('field_annual_insurance');
+
+      if (ammountInputs.loan.value.length === 0) {
+        loanField.classList.add('error')
+      } else {
+        loanField.classList.remove('error')
+      }
+
+      if (ammountInputs.annualTax.value.length === 0 || ammountInputs.annualInsurance.value.length ===0) {
+        bottomFieldsContainer.classList.add('error')
+
+        if (ammountInputs.annualTax.value.length === 0) {
+          taxField.classList.add('error')
+        } else {
+          taxField.classList.remove('error')
+        }
+
+        if (ammountInputs.annualInsurance.value.length === 0) {
+          insuranceField.classList.add('error')
+        } else {
+          insuranceField.classList.remove('error')
+        }
+
+      } else {
+        bottomFieldsContainer.classList.remove('error')
+      }
+    }
+
+    function isDataValidToCalculate() {
+      return (ammountInputs.loan.value.length !== 0 && ammountInputs.annualTax.value.length !== 0 && ammountInputs.annualInsurance.value.length !== 0)
+    }
+
+    function showResults() {
       var results = getCalculatedResults()
       setResults(results)
       setCalculatedClass()
       setTimeout(scrollToResults, RESULTS_CARD_APPEARING_ANIMATION_TIME)
     }
 
+    function onCalculateClicked() {
+      if (isDataValidToCalculate()) {
+       showResults()
+      } else {
+        showErrorMessagesIfAny()
+      }
+    }
 
     function addEventListeners() {
       ranges.interest.addEventListener('change', handleYearsRangeInputChange, false)
