@@ -567,9 +567,15 @@ input[type=range]:focus::-ms-fill-upper {
         font-size: 14px;
         margin: 0;
     }
-
     .calculator_results__header--subtitle {
         margin: 0;
+        font-family: 'SFUIDisplay', sans-serif;
+        font-weight: normal;
+    }
+
+    .calculator_results__result {
+        font-family: 'SFUIDisplay', sans-serif;
+        font-weight: normal;
     }
 
     .calculator_results__result {
@@ -628,13 +634,6 @@ input[type=range]:focus::-ms-fill-upper {
 
     .calculator_results__header--subtitle {
         font-size: 12px;
-        font-family: 'SFUIDisplay', sans-serif;
-        font-weight: normal;
-    }
-
-    .calculator_results__result {
-        font-family: 'SFUIDisplay', sans-serif;
-        font-weight: normal;
     }
 
     .calculator_results__result,
